@@ -3,7 +3,7 @@
  * Fired when the plugin is uninstalled.
  *
  * @link       https://www.dariah.eu
- * @since      0.1.0
+ * @since      1.0.0
  *
  * @package    Nerd_Wp
  */

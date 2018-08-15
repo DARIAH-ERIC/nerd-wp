@@ -6,7 +6,7 @@
  * This file is used to markup the admin-facing aspects of the plugin.
  *
  * @link       https://www.dariah.eu
- * @since      0.1.0
+ * @since      1.0.0
  *
  * @package    Nerd_Wp
  * @subpackage Nerd_Wp/admin/partials

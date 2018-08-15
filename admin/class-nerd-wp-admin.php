@@ -6,7 +6,7 @@
  * enqueue the admin-specific stylesheet and JavaScript.
  *
  * @link       https://www.dariah.eu
- * @since      0.1.0
+ * @since      1.0.0
  *
  * @package    Nerd_Wp
  * @subpackage Nerd_Wp/admin
@@ -18,7 +18,7 @@ class Nerd_Wp_Admin {
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 * @access   private
 	 * @var      string    $plugin_name    The ID of this plugin.
 	 */
@@ -26,7 +26,7 @@ class Nerd_Wp_Admin {
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 * @access   private
 	 * @var      string    $version    The current version of this plugin.
 	 */
@@ -34,7 +34,7 @@ class Nerd_Wp_Admin {
 	/**
 	 * This is the name of the submit button of the relaunch NERD meta box. We have it in a variable because it is very important for the logic and we only want to name it once.
 	 *
-	 * @since   0.1.0
+	 * @since   1.0.0
 	 * @access  private
 	 * @var     string      $submit_btn_name    The name of the submit button.
 	 */
@@ -42,7 +42,7 @@ class Nerd_Wp_Admin {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 * @param      string    $plugin_name       The name of this plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
@@ -53,7 +53,7 @@ class Nerd_Wp_Admin {
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
 		/**
@@ -72,7 +72,7 @@ class Nerd_Wp_Admin {
 	/**
 	 * Register the JavaScript for the admin area.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
 		/**
@@ -92,7 +92,7 @@ class Nerd_Wp_Admin {
 	/**
 	 * Register the administration menu for this plugin into the WordPress Dashboard menu.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 */
 	public function add_plugin_admin_menu() {
 		/*
@@ -109,7 +109,7 @@ class Nerd_Wp_Admin {
 	/**
 	 * Add settings action link to the plugins page.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 */
 	public function add_action_links( $links ) {
 		/*
@@ -123,7 +123,7 @@ class Nerd_Wp_Admin {
 	/**
 	 * Render the settings page for this plugin.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 */
 	public function display_plugin_setup_page() {
 		include_once( 'partials/nerd-wp-admin-display.php' );
@@ -132,7 +132,7 @@ class Nerd_Wp_Admin {
 	 *  Save the plugin options
 	 *
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 */
 	public function options_update() {
 		register_setting( $this->plugin_name, $this->plugin_name, array($this, 'validate', 'default' => array( "url_nerd_instance" => "", "category_weight" => "0.04", "entity_weight" => "0.7" ) ) );
@@ -140,7 +140,7 @@ class Nerd_Wp_Admin {
 	/**
 	 * Validate all options fields
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 */
 	public function validate( $input ) {
 		// All checkboxes inputs
@@ -250,7 +250,7 @@ class Nerd_Wp_Admin {
 
 	/**
 	 * Action to do when a post is saved (draft or updated)
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 *
 	 * @param $post_id int The identifier of the post just created or updated
 	 */

@@ -9,14 +9,14 @@
  * that starts the plugin.
  *
  * @link              https://www.dariah.eu/
- * @since             0.1.0
+ * @since             1.0.0
  * @package           Nerd
  *
  * @wordpress-plugin
  * Plugin Name:       NERD WP
  * Plugin URI:        https://github.com/dariah-eric/nerd-wp
  * Description:       NERD (Named Entity Recognition and Disambiguation: https://github.com/kermitt2/entity-fishing) is an application that allows to recognize and disambiguate named entities. This plugin allows integration of this with Wordpress.
- * Version:           0.1.0
+ * Version:           1.0.0
  * Author:            Yoann
  * Author URI:        https://www.dariah.eu
  * License:           Apache License - 2.0
@@ -68,7 +68,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-nerd-wp.php';
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since    0.1.0
+ * @since    1.0.0
  */
 function run_nerd_wp() {
 	$plugin = new Nerd_Wp();

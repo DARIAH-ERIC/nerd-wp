@@ -4,7 +4,7 @@ class Nerd_Wp_Widget extends WP_Widget {
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 * @access   private
 	 * @var      string    $plugin_name    The ID of this plugin.
 	 */

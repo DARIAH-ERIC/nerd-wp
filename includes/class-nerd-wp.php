@@ -6,7 +6,7 @@
  * public-facing side of the site and the admin area.
  *
  * @link       https://www.dariah.eu
- * @since      0.1.0
+ * @since      1.0.0
  *
  * @package    Nerd_Wp
  * @subpackage Nerd_Wp/includes
@@ -20,7 +20,7 @@
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
  *
- * @since      0.1.0
+ * @since      1.0.0
  * @package    Nerd
  * @subpackage Nerd/includes
  * @author     Yoann <yoann.moranville@dariah.eu>
@@ -30,7 +30,7 @@ class Nerd_Wp {
 	 * The loader that's responsible for maintaining and registering all hooks that power
 	 * the plugin.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 * @access   protected
 	 * @var      Nerd_Wp_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
@@ -38,7 +38,7 @@ class Nerd_Wp {
 	/**
 	 * The unique identifier of this plugin.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 * @access   protected
 	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
 	 */
@@ -46,7 +46,7 @@ class Nerd_Wp {
 	/**
 	 * The current version of the plugin.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 * @access   protected
 	 * @var      string    $version    The current version of the plugin.
 	 */
@@ -58,13 +58,13 @@ class Nerd_Wp {
 	 * Load the dependencies, define the locale, and set the hooks for the admin area and
 	 * the public-facing side of the site.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 */
 	public function __construct() {
 		if ( defined( 'NERD_WP_VERSION' ) ) {
 			$this->version = NERD_WP_VERSION;
 		} else {
-			$this->version = '0.1.0';
+			$this->version = '1.0.0';
 		}
 		$this->plugin_name = 'nerd-wp';
 		$this->load_dependencies();
@@ -85,7 +85,7 @@ class Nerd_Wp {
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 * @access   private
 	 */
 	private function load_dependencies() {
@@ -121,7 +121,7 @@ class Nerd_Wp {
 	 * Uses the Nerd_Wp_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 * @access   private
 	 */
 	private function set_locale() {
@@ -132,7 +132,7 @@ class Nerd_Wp {
 	 * Register all of the hooks related to the admin area functionality
 	 * of the plugin.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
@@ -165,7 +165,7 @@ class Nerd_Wp {
 	 * Register all of the hooks related to the public-facing functionality
 	 * of the plugin.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 * @access   private
 	 */
 	private function define_public_hooks() {
@@ -182,7 +182,7 @@ class Nerd_Wp {
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 *
-	 * @since    0.1.0
+	 * @since    1.0.0
 	 */
 	public function run() {
 		$this->loader->run();
@@ -191,7 +191,7 @@ class Nerd_Wp {
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since     0.1.0
+	 * @since     1.0.0
 	 * @return    string    The name of the plugin.
 	 */
 	public function get_plugin_name() {
@@ -200,7 +200,7 @@ class Nerd_Wp {
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @since     0.1.0
+	 * @since     1.0.0
 	 * @return    Nerd_Wp_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
@@ -209,7 +209,7 @@ class Nerd_Wp {
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since     0.1.0
+	 * @since     1.0.0
 	 * @return    string    The version number of the plugin.
 	 */
 	public function get_version() {
