@@ -8,8 +8,8 @@
  * @link       https://www.dariah.eu
  * @since      0.1.0
  *
- * @package    Nerd_Wp_Plugin
- * @subpackage Nerd_Wp_Plugin/includes
+ * @package    Nerd_Wp
+ * @subpackage Nerd_Wp/includes
  */
 /**
  * The core plugin class.
@@ -21,18 +21,18 @@
  * version of the plugin.
  *
  * @since      0.1.0
- * @package    Nerd_Wp_Plugin
- * @subpackage Nerd_Wp_Plugin/includes
+ * @package    Nerd
+ * @subpackage Nerd/includes
  * @author     Yoann <yoann.moranville@dariah.eu>
  */
-class Nerd_Wp_Plugin {
+class Nerd_Wp {
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
 	 * the plugin.
 	 *
 	 * @since    0.1.0
 	 * @access   protected
-	 * @var      Nerd_Wp_Plugin_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Nerd_Wp_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 	/**
@@ -61,12 +61,12 @@ class Nerd_Wp_Plugin {
 	 * @since    0.1.0
 	 */
 	public function __construct() {
-		if ( defined( 'NERD_WP_PLUGIN_VERSION' ) ) {
-			$this->version = NERD_WP_PLUGIN_VERSION;
+		if ( defined( 'NERD_WP_VERSION' ) ) {
+			$this->version = NERD_WP_VERSION;
 		} else {
 			$this->version = '0.1.0';
 		}
-		$this->plugin_name = 'nerd-wp-plugin';
+		$this->plugin_name = 'nerd-wp';
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_admin_hooks();
@@ -93,39 +93,39 @@ class Nerd_Wp_Plugin {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-nerd-wp-plugin-loader.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-nerd-wp-loader.php';
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-nerd-wp-plugin-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-nerd-wp-i18n.php';
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-nerd-wp-plugin-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-nerd-wp-admin.php';
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-nerd-wp-plugin-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-nerd-wp-public.php';
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing widget
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-nerd-wp-plugin-widget.php';
-		$this->loader = new Nerd_Wp_Plugin_Loader();
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-nerd-wp-widget.php';
+		$this->loader = new Nerd_Wp_Loader();
 	}
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Nerd_Wp_Plugin_i18n class in order to set the domain and to register the hook
+	 * Uses the Nerd_Wp_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    0.1.0
 	 * @access   private
 	 */
 	private function set_locale() {
-		$plugin_i18n = new Nerd_Wp_Plugin_i18n();
+		$plugin_i18n = new Nerd_Wp_i18n();
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 	}
 	/**
@@ -136,7 +136,7 @@ class Nerd_Wp_Plugin {
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
-		$plugin_admin = new Nerd_Wp_Plugin_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new Nerd_Wp_Admin( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
@@ -169,14 +169,14 @@ class Nerd_Wp_Plugin {
 	 * @access   private
 	 */
 	private function define_public_hooks() {
-		$plugin_public = new Nerd_Wp_Plugin_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new Nerd_Wp_Public( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
-//		$this->loader->add_action( 'widgets_init', new Nerd_Wp_Plugin_Widget( $this-> plugin_name ), 'nerd_wp_plugin_widget' );
+//		$this->loader->add_action( 'widgets_init', new Nerd_Wp_Widget( $this-> plugin_name ), 'nerd_wp_widget' );
 		$this->loader->add_action_callable( 'widgets_init', function() {
-			$widget = new Nerd_Wp_Plugin_Widget( $this->get_plugin_name() );
-			$widget->nerd_wp_plugin_widget( $widget );
+			$widget = new Nerd_Wp_Widget( $this->get_plugin_name() );
+			$widget->nerd_wp_widget( $widget );
 		} );
 	}
 	/**
@@ -201,7 +201,7 @@ class Nerd_Wp_Plugin {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     0.1.0
-	 * @return    Nerd_Wp_Plugin_Loader    Orchestrates the hooks of the plugin.
+	 * @return    Nerd_Wp_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;

@@ -11,10 +11,10 @@ Those tags, in return are used to propose extra information coming from Wikipedi
 ---
 
 # Install (via WordPress plugins)
-1. Install via [WordPress plugins](https://www.wordpress.org/plugins/nerd-wp-plugin)
+1. Install via [WordPress plugins](https://www.wordpress.org/plugins/nerd-wp)
 
 # Install (manually)
-1. Upload directory `nerd-wp-plugin` to the `/wp-content/plugins/` directory
+1. Upload directory `nerd-wp` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 
 # How does it work?

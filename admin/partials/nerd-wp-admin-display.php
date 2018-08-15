@@ -8,8 +8,8 @@
  * @link       https://www.dariah.eu
  * @since      0.1.0
  *
- * @package    Nerd_Wp_Plugin
- * @subpackage Nerd_Wp_Plugin/admin/partials
+ * @package    Nerd_Wp
+ * @subpackage Nerd_Wp/admin/partials
  */
 ?>
 

@@ -2,7 +2,7 @@
 /**
  * Class SampleTest
  *
- * @package Nerd_Wp_Plugin
+ * @package Nerd_Wp
  */
 
 /**

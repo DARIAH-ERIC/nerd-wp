@@ -1,6 +1,6 @@
 <?php
 
-class Nerd_Wp_Plugin_Widget extends WP_Widget {
+class Nerd_Wp_Widget extends WP_Widget {
 	/**
 	 * The ID of this plugin.
 	 *
@@ -13,8 +13,8 @@ class Nerd_Wp_Plugin_Widget extends WP_Widget {
 	function __construct( $plugin_name ) {
 		$this->plugin_name = $plugin_name;
 		error_log($plugin_name);
-		parent::__construct( 'nerd_wp_plugin_widget', __( 'NERD WP Plugin Widget', 'nerd_wp_plugin_domain' ), array(
-			'description' => __( 'NERD WP Plugin Widget', 'nerd_wp_plugin_domain' )
+		parent::__construct( 'nerd_wp_widget', __( 'NERD WP Widget', 'nerd_wp_domain' ), array(
+			'description' => __( 'NERD WP Widget', 'nerd_wp_domain' )
 		) );
 	}
 
@@ -81,7 +81,7 @@ class Nerd_Wp_Plugin_Widget extends WP_Widget {
 	public function form( $instance ) {
 	}
 
-	function nerd_wp_plugin_widget( \WP_Widget $widget) {
+	function nerd_wp_widget( \WP_Widget $widget) {
 		register_widget( $widget );
 	}
 }

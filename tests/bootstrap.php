@@ -2,7 +2,7 @@
 /**
  * PHPUnit bootstrap file
  *
- * @package Nerd_Wp_Plugin
+ * @package Nerd_Wp
  */
 
 $_tests_dir = getenv( 'WP_TESTS_DIR' );
@@ -23,7 +23,7 @@ require_once $_tests_dir . '/includes/functions.php';
  * Manually load the plugin being tested.
  */
 function _manually_load_plugin() {
-	require dirname( dirname( __FILE__ ) ) . '/nerd-wp-plugin.php';
+	require dirname( dirname( __FILE__ ) ) . '/nerd-wp.php';
 }
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 

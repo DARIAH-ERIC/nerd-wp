@@ -1,5 +1,5 @@
 <?php
-namespace Nerd_Wp_Plugin_Lib\Utils;
+namespace Nerd_Wp_Lib\Utils;
 
 use WP_Ajax_Response;
 

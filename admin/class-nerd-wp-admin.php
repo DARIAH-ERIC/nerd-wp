@@ -8,13 +8,13 @@
  * @link       https://www.dariah.eu
  * @since      0.1.0
  *
- * @package    Nerd_Wp_Plugin
- * @subpackage Nerd_Wp_Plugin/admin
+ * @package    Nerd_Wp
+ * @subpackage Nerd_Wp/admin
  * @author     Yoann <yoann.moranville@dariah.eu>
  */
 
 use GuzzleHttp\Exception\RequestException;
-class Nerd_Wp_Plugin_Admin {
+class Nerd_Wp_Admin {
 	/**
 	 * The ID of this plugin.
 	 *
@@ -60,14 +60,14 @@ class Nerd_Wp_Plugin_Admin {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Nerd_Wp_Plugin_Loader as all of the hooks are defined
+		 * defined in Nerd_Wp_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Nerd_Wp_Plugin_Loader will then create the relationship
+		 * The Nerd_Wp_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/nerd-wp-plugin-admin.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/nerd-wp-admin.css', array(), $this->version, 'all' );
 	}
 	/**
 	 * Register the JavaScript for the admin area.
@@ -79,14 +79,14 @@ class Nerd_Wp_Plugin_Admin {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Nerd_Wp_Plugin_Loader as all of the hooks are defined
+		 * defined in Nerd_Wp_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Nerd_Wp_Plugin_Loader will then create the relationship
+		 * The Nerd_Wp_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/nerd-wp-plugin-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/nerd-wp-admin.js', array( 'jquery' ), $this->version, false );
 	}
 
 	/**
@@ -126,7 +126,7 @@ class Nerd_Wp_Plugin_Admin {
 	 * @since    0.1.0
 	 */
 	public function display_plugin_setup_page() {
-		include_once( 'partials/nerd-wp-plugin-admin-display.php' );
+		include_once( 'partials/nerd-wp-admin-display.php' );
 	}
 	/**
 	 *  Save the plugin options
@@ -230,7 +230,7 @@ class Nerd_Wp_Plugin_Admin {
 	}
 
 	function nerd_meta_box() {
-		add_meta_box("nerd-meta-box", "NERD WP Plugin", array($this, "relaunch_nerd"), "post", "side", "high", 0);
+		add_meta_box("nerd-meta-box", "NERD WP", array($this, "relaunch_nerd"), "post", "side", "high", 0);
 	}
 
 	/**
@@ -272,7 +272,7 @@ class Nerd_Wp_Plugin_Admin {
 				'url'        => get_post_meta( $post_id, 'item_link', true ),
 				'authorship' => 'auto'
 			);
-			$pf_readability = new \Nerd_Wp_Plugin_Lib\Utils\PF_ReadabilityForNerd();
+			$pf_readability = new \Nerd_Wp_Lib\Utils\PF_ReadabilityForNerd();
 			$item_content_obj = $pf_readability ->get_readable_text( $readArgs );
 			$item_content = $item_content_obj['readable'];
 		} else { //If it is a simple text written

@@ -5,7 +5,7 @@
  * @link       https://www.dariah.eu
  * @since      0.1.0
  *
- * @package    Nerd_Wp_Plugin
+ * @package    Nerd_Wp
  */
 
 // If uninstall not called from WordPress, then exit.

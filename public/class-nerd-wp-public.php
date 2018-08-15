@@ -7,11 +7,11 @@
  *
  * @link       https://www.dariah.eu
  * @since      0.1.0
- * @package    Nerd_Wp_Plugin
- * @subpackage Nerd_Wp_Plugin/public
+ * @package    Nerd_Wp
+ * @subpackage Nerd_Wp/public
  * @author     Yoann Moranville <yoann.moranville@dariah.eu>
  */
-class Nerd_Wp_Plugin_Public {
+class Nerd_Wp_Public {
 	/**
 	 * The ID of this plugin.
 	 *
@@ -52,14 +52,14 @@ class Nerd_Wp_Plugin_Public {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Nerd_Wp_Plugin_Loader as all of the hooks are defined
+		 * defined in Nerd_Wp_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Nerd_Wp_Plugin_Loader will then create the relationship
+		 * The Nerd_Wp_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/nerd-wp-plugin-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/nerd-wp-public.css', array(), $this->version, 'all' );
 	}
 
 	/**
@@ -72,14 +72,14 @@ class Nerd_Wp_Plugin_Public {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Nerd_Wp_Plugin_Loader as all of the hooks are defined
+		 * defined in Nerd_Wp_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Nerd_Wp_Plugin_Loader will then create the relationship
+		 * The Nerd_Wp_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/nerd-wp-plugin-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/nerd-wp-public.js', array( 'jquery' ), $this->version, false );
 		wp_enqueue_script( $this->plugin_name . 'wiki2html', plugin_dir_url( __FILE__ ) . 'js/wiki2html.js', array( 'jquery' ), $this->version, false );
 
 	}

@@ -1,12 +1,12 @@
 <?php
-namespace Nerd_Wp_Plugin_Lib\Utils;
+namespace Nerd_Wp_Lib\Utils;
 
 /**
  * Class RetrieveHttpContentForNerd
  *
  * This file has been downloaded from PressForward tool (https://github.com/PressForward/pressforward/)
  *
- * @package Nerd_Wp_Plugin_Lib\Utils
+ * @package Nerd_Wp_Lib\Utils
  */
 
 class RetrieveHttpContentForNerd {

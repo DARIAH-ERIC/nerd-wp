@@ -1,6 +1,6 @@
 <?php
 
-namespace Nerd_Wp_Plugin_Lib\Utils;
+namespace Nerd_Wp_Lib\Utils;
 /*
 
  * Notice from Yoann: This file has been downloaded from the PressForward tool (https://github.com/PressForward/pressforward/)

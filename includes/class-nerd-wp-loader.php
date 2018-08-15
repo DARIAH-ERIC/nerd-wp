@@ -5,8 +5,8 @@
  * @link       https://www.dariah.eu
  * @since      0.1.0
  *
- * @package    Nerd_Wp_Plugin
- * @subpackage Nerd_Wp_Plugin/includes
+ * @package    Nerd_Wp
+ * @subpackage Nerd_Wp/includes
  */
 /**
  * Register all actions and filters for the plugin.
@@ -15,11 +15,11 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    Nerd_Wp_Plugin
- * @subpackage Nerd_Wp_Plugin/includes
+ * @package    Nerd_Wp
+ * @subpackage Nerd_Wp/includes
  * @author     Yoann <yoann.moranville@dariah.eu>
  */
-class Nerd_Wp_Plugin_Loader {
+class Nerd_Wp_Loader {
 	/**
 	 * The array of actions registered with WordPress.
 	 *

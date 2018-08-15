@@ -20,7 +20,7 @@ Those tags, in return are used to propose extra information coming from Wikipedi
 
 == Installation ==
 
-1. Upload directory `nerd-wp-plugin` to the `/wp-content/plugins/` directory
+1. Upload directory `nerd-wp` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Frequently Asked Questions ==
