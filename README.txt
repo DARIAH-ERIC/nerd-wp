@@ -18,7 +18,11 @@ This plugin allows integration of this with Wordpress. Each post can be run thro
 Those tags, in return are used to propose extra information coming from Wikipedia and Wikidata.
 
 
-== Installation ==
+== Installation (via WordPress plugins) ==
+
+1. Install via [WordPress plugins](https://www.wordpress.org/plugins/nerd-wp)
+
+== Installation (manually) ==
 
 1. Upload directory `nerd-wp` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
@@ -29,7 +33,7 @@ To come later
 
 == Screenshots ==
 
-To come later
+1. Example of the widget that includes the Tags created with the Named Entities by NERD
 
 == Changelog ==
 
