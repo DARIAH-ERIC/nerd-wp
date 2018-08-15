@@ -1,0 +1,43 @@
+.nerd_tags {
+    /*text-decoration: underline #eb684b;*/
+    /*border: 1px dashed orange;*/
+}
+
+.label {
+    padding: 1px 3px 2px;
+    font-size: 10px;
+    font-weight: bold;
+    color: #ffffff;
+    text-transform: uppercase;
+    white-space: nowrap;
+    /*background-color: #87A1A8;*/
+    background-color: #f89406;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.info-sense-box {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    width: 450px;
+    padding: 5px 2px 3px 2px;
+    border: 1px solid #87A1A8;
+    background-color: #87A1A8;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: pre-line;
+    z-index: 10;
+}
+
+.nerd_tags:hover > .info-sense-box {
+    display: block;
+}
+
+.info-sense-box p {
+    margin-bottom: 5px;
+}
