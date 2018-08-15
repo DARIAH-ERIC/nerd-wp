@@ -2,8 +2,6 @@
 
 _Developed by DARIAH for [OpenMethods](https://openmethods.dariah.eu/)_
 
-NERD (https://github.com/kermitt2/entity-fishing) is an application that allows to recognize and disambiguate named entities. This plugin allows integration of this with Wordpress.
- 
 [NERD](https://github.com/kermitt2/entity-fishing) is an application that allows to recognize and disambiguate named entities.
 This plugin allows integration of this with Wordpress. Each post can be run through NERD and will automatically create tags for it.
 Those tags, in return are used to propose extra information coming from Wikipedia and Wikidata.
