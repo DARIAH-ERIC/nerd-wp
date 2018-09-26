@@ -11,6 +11,7 @@
  * @subpackage Nerd_Wp/public
  * @author     Yoann Moranville <yoann.moranville@dariah.eu>
  */
+use GuzzleHttp\Exception\RequestException;
 class Nerd_Wp_Public {
 	/**
 	 * The ID of this plugin.
@@ -83,4 +84,38 @@ class Nerd_Wp_Public {
 		wp_enqueue_script( $this->plugin_name . 'wiki2html', plugin_dir_url( __FILE__ ) . 'js/wiki2html.js', array( 'jquery' ), $this->version, false );
 
 	}
+
+    public function access_nerd_kb() {
+	    $url = '/nerd_kb_service/?url=';
+        if ( substr( $_SERVER['REQUEST_URI'], 0, strlen( $url ) ) === $url ) {
+            $nerd_query = substr( $_SERVER['REQUEST_URI'], strlen( $url ) );
+
+            $options = get_option( $this->plugin_name );
+            $url_nerd_instance = $options['url_nerd_instance'];
+            if( $url_nerd_instance ) {;
+                if ( substr( $url_nerd_instance, - 1 ) != '/' ) { // In case the URL provided does not contain a ending slash, add it
+                    $url_nerd_instance = $url_nerd_instance . "/";
+                }
+                $access_url = $url_nerd_instance . urldecode( $nerd_query );
+
+                $client = new GuzzleHttp\Client();
+                try {
+                    $response = $client->request( 'GET', $access_url );
+                    if( $response->getStatusCode() != 200 ) {
+                        error_log( "Reason: " . $response->getReasonPhrase() );
+                    }
+
+                } catch ( RequestException $e ) {
+                    if ( $e->hasResponse() ) {
+                        error_log( $e->getMessage() );
+                        error_log( $e->getResponse()->getBody()->getContents() );
+                    }
+                } catch ( \GuzzleHttp\Exception\GuzzleException $e ) {
+                    error_log( $e->getMessage() );
+                }
+                wp_send_json( $response->getBody()->getContents() );
+            }
+        }
+        return "";
+    }
 }

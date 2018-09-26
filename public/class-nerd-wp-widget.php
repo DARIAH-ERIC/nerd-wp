@@ -1,17 +1,8 @@
 <?php
 
 class Nerd_Wp_Widget extends WP_Widget {
-	/**
-	 * The ID of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $plugin_name    The ID of this plugin.
-	 */
-	private $plugin_name;
 
-	function __construct( $plugin_name ) {
-		$this->plugin_name = $plugin_name;
+	function __construct() {
 		parent::__construct( 'nerd_wp_widget', __( 'NERD WP Widget', 'nerd_wp_domain' ), array(
 			'description' => __( 'NERD WP Widget', 'nerd_wp_domain' )
 		) );
@@ -54,18 +45,11 @@ class Nerd_Wp_Widget extends WP_Widget {
 				}
             }
             if( $used_tags > 0 ) {
-	            $options = get_option( $this->plugin_name );
-	            $url_nerd_instance = $options['url_nerd_instance'];
-	            if( $url_nerd_instance ) {
-		            if ( substr( $url_nerd_instance, - 1 ) != '/' ) { // In case the URL provided does not contain a ending slash, add it
-			            $url_nerd_instance = $url_nerd_instance . "/";
-		            }
-		            echo '<script type="text/javascript">
-							jQuery(document).ready(function($){
-		                        hoverEntity("' . $url_nerd_instance . '");
-							});
-					      </script>';
-	            }
+                echo '<script type="text/javascript">
+                        jQuery(document).ready(function($){
+                            hoverEntity();
+                        });
+                      </script>';
 	            echo $args['after_widget'];
             }
 		}
@@ -80,8 +64,8 @@ class Nerd_Wp_Widget extends WP_Widget {
 	public function form( $instance ) {
 	}
 
-	function nerd_wp_widget( \WP_Widget $widget) {
-		register_widget( $widget );
+	function nerd_wp_widget() {
+		register_widget( $this );
 	}
 }
 

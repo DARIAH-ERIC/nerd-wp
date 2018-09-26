@@ -1,4 +1,4 @@
-function hoverEntity(nerd_url) {
+function hoverEntity() {
     jQuery(".nerd_tags").each(function(index, value) {
         var wiki_ids = jQuery(this).attr('id');
         var wiki_array = wiki_ids.split(";");
@@ -18,9 +18,9 @@ function hoverEntity(nerd_url) {
                 var this_element = jQuery(this);
                 jQuery.ajax({
                     type: 'GET',
-                    url: nerd_url + 'service/kb/concept/' + wikipedia_id.split(":")[1] + '?lang=en',
+                    url: '/nerd_kb_service/?url=' + encodeURIComponent('service/kb/concept/' + wikipedia_id.split(":")[1] + '?lang=en'),
                     success: function(result) {
-                        viewEntity(result, wikipedia_id, this_element);
+                        viewEntity(jQuery.parseJSON(result), wikipedia_id, this_element);
                     },
                     complete: function() {
                         window.ajaxRunning = false;

@@ -172,12 +172,8 @@ class Nerd_Wp {
 		$plugin_public = new Nerd_Wp_Public( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-
-//		$this->loader->add_action( 'widgets_init', new Nerd_Wp_Widget( $this-> plugin_name ), 'nerd_wp_widget' );
-		$this->loader->add_action_callable( 'widgets_init', function() {
-			$widget = new Nerd_Wp_Widget( $this->get_plugin_name() );
-			$widget->nerd_wp_widget( $widget );
-		} );
+		$this->loader->add_action( 'init', $plugin_public, 'access_nerd_kb' );
+		$this->loader->add_action( 'widgets_init', new Nerd_Wp_Widget(), 'nerd_wp_widget' );
 	}
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
