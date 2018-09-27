@@ -5,7 +5,7 @@ Tags: entity recognition, disambiguation, entity fishing
 Requires at least: 4.9.1
 Tested up to: 4.9.1
 Requires PHP: 5.6.35
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: Apache License - 2.0
 License URI: http://www.apache.org/licenses/LICENSE-2.0
 
