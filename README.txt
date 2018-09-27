@@ -37,7 +37,10 @@ To come later
 
 == Changelog ==
 
-= 0.1 =
+= 1.1.0 =
+* Ajax queries to NERD are not done via JS anymore but via the PHP code [See Issue](https://github.com/DARIAH-ERIC/nerd-wp/issues/1)
+
+= 1.0.0 =
 * Very first version
 
 == Upgrade Notice ==
