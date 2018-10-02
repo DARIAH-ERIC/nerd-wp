@@ -5,7 +5,7 @@ Tags: entity recognition, disambiguation, entity fishing
 Requires at least: 4.9.1
 Tested up to: 4.9.1
 Requires PHP: 5.6.35
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: Apache License - 2.0
 License URI: http://www.apache.org/licenses/LICENSE-2.0
 
@@ -36,6 +36,9 @@ To come later
 1. Example of the widget that includes the Tags created with the Named Entities by NERD
 
 == Changelog ==
+
+= 1.1.1 =
+* Fix for different languages within the Wikipedia links [See Issue](https://github.com/DARIAH-ERIC/nerd-wp/issues/2)
 
 = 1.1.0 =
 * Ajax queries to NERD are not done via JS anymore but via the PHP code [See Issue](https://github.com/DARIAH-ERIC/nerd-wp/issues/1)

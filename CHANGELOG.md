@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [1.1.1] - 2018-10-02
+### Changed
+- Fix for different languages within the Wikipedia links [See Issue](https://github.com/DARIAH-ERIC/nerd-wp/issues/2)
+
 ## [1.1.0] - 2018-09-27
 ### Changed
 - Ajax queries to NERD are not done via JS anymore but via the PHP code [See Issue](https://github.com/DARIAH-ERIC/nerd-wp/issues/1)
