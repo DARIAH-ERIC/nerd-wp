@@ -212,10 +212,9 @@ class Nerd_Wp_Admin {
 		}
 		foreach ( $wiki_array as $key => $array ) {
 			if ( $key == $WIKIPEDIA_ID || $key == $CATEGORY_ID ) {
-				$return_links .= '<a target="_blank" href="https://"' . ( $array[2] !== false ? "fr" : "en" ) . '".wikipedia.org/wiki?curid=' .
-				                 $array[1] .
-				                 '">' .
-				                 $key . ":" . $value . '</a> ';
+				$return_links .= '<a target="_blank" href="https://' . ( sizeof( $array ) > 2 && $array[2] !== false ?
+                        $array[2] : "en" ) . '.wikipedia.org/wiki?curid=' . $array[1] . '">' . $key . ":" . $value .
+                         '</a> ';
 			} else if ( $key == $WIKIDATA_ID ) {
 				$return_links .= '<a target="_blank" href="https://www.wikidata.org/wiki/' . $value . '">' . $key . ":" . $value . '</a> ';
 			}
@@ -361,24 +360,23 @@ class Nerd_Wp_Admin {
 		if( $response ) {
 			$nerd_response = json_decode( $response->getBody()->getContents(), true );
 			error_log( "=== Global categories ===" );
+			$lang = $nerd_response["language"]["lang"];
 			foreach ($nerd_response["global_categories"] as $category) {
 				if( $category["weight"] > $category_weight) {
 					error_log($category["category"] . " - page_id: " . $category["page_id"]);
-//					wp_set_post_tags( $post_id, $category["category"], true );
-					$this->add_taxonomy_with_wikipedia_id( $post_id, $category["category"], 'category', array( "category_id" => $category["page_id"] ) );
+					$this->add_taxonomy_with_wikipedia_id( $post_id, $category["category"], 'category', array( "category_id" => array( $category["page_id"], $lang ) ) );
 				}
 			}
 			error_log( "=== Named entities ===" );
 			foreach ($nerd_response["entities"] as $entity) {
 				if( $entity["nerd_selection_score"] > $entity_weight ) {
 					error_log($entity["rawName"] . " - nerd_selection_score: " . $entity["nerd_selection_score"]);
-//					wp_set_post_tags( $post_id, $category["category"], true );
 					$wiki_array = array();
 					if( array_key_exists( "wikipediaExternalRef", $entity ) ) {
-						$wiki_array["wikipedia_id"] = $entity["wikipediaExternalRef"];
+						$wiki_array["wikipedia_id"] = array( $entity["wikipediaExternalRef"], $lang );
 					}
 					if( array_key_exists("wikidataId", $entity) ) {
-						$wiki_array["wikidata_id"] = $entity["wikidataId"];
+						$wiki_array["wikidata_id"] = array( $entity["wikidataId"], $lang );
 					}
 					$this->add_taxonomy_with_wikipedia_id( $post_id, $entity["rawName"], 'entity', $wiki_array );
 				}
@@ -398,11 +396,14 @@ class Nerd_Wp_Admin {
 	 */
 	public function add_taxonomy_with_wikipedia_id( $post_id, $term, $type, $wiki_id ) {
 		$description = "";
-		foreach( $wiki_id as $key => $value ) {
+		foreach( $wiki_id as $key => $array ) {
 			if( $description != "" ) {
 				$description .= ";";
 			}
-			$description .= $key . ':' . $value;
+			$description .= $key . ':' . $array[0];
+			if( sizeof( $array ) > 1 ) {
+                $description .= ':' . $array[1];
+            }
 		}
 		$term_args = array(
 			'description' => $description,

@@ -12,6 +12,7 @@ class Nerd_Wp_Widget extends WP_Widget {
 		$WIKIPEDIA_ID = "wikipedia_id";
 		$WIKIDATA_ID = "wikidata_id";
 		$CATEGORY_ID = "category_id";
+		$LANGUAGE = "language";
 
 		if( is_single() ) {
 			global $post;
@@ -24,7 +25,7 @@ class Nerd_Wp_Widget extends WP_Widget {
 				foreach ( $ids as $value ) {
 					if ( strpos( $value, ':' ) !== false ) {
 						$array = explode( ':', $value );
-						$wiki_array[ $array[0] ] = $array[1];
+						$wiki_array[ $array[0] ] = $array;
 					}
 				}
 
@@ -34,7 +35,13 @@ class Nerd_Wp_Widget extends WP_Widget {
 						echo $args["before_title"] . 'NERD Plugin' . $args["after_title"];
 					}
 					$used_tags = $used_tags + 1;
-					echo '<a target="_blank" class="label" href="https://en.wikipedia.org/wiki?curid=' . $wiki_array[$CATEGORY_ID] . '">' . $tag->name . '</a> ';
+                    $lang = "en";
+                    if( sizeof( $wiki_array[$CATEGORY_ID] ) > 1 ) {
+                        $lang = $wiki_array[$CATEGORY_ID][1];
+                    }
+					echo '<a target="_blank" class="label" href="https://' . $lang . '.wikipedia.org/wiki?curid=' .
+                                                                           $wiki_array[$CATEGORY_ID][0] . '">' .
+                         $tag->name . '</a> ';
 				} else if ( array_key_exists( $WIKIPEDIA_ID, $wiki_array ) || array_key_exists( $WIKIDATA_ID, $wiki_array ) ) {
 					if( $used_tags == 0 ) {
 						echo $args['before_widget'];

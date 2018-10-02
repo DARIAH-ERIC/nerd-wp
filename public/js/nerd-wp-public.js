@@ -18,7 +18,7 @@ function hoverEntity() {
                 var this_element = jQuery(this);
                 jQuery.ajax({
                     type: 'GET',
-                    url: '/nerd_kb_service/?url=' + encodeURIComponent('service/kb/concept/' + wikipedia_id.split(":")[1] + '?lang=en'),
+                    url: '/nerd_kb_service/?url=' + encodeURIComponent('service/kb/concept/' + wikipedia_id.split(":")[1] + '?lang=' + wikipedia_id.split(":")[2]),
                     success: function(result) {
                         viewEntity(jQuery.parseJSON(result), wikipedia_id, this_element);
                     },
@@ -34,6 +34,9 @@ function hoverEntity() {
 
 function viewEntity(entity, wikipedia_id, parent_element) {
     var lang ='en';
+    if(wikipedia_id.split(":")[2] !== false) {
+        lang = wikipedia_id.split(":")[2];
+    }
 
     var wikipedia = entity.wikipediaExternalRef;
     var wikidataId = entity.wikidataId;
