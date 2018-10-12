@@ -2,6 +2,9 @@
 
 namespace Nerd_Wp_Lib\Utils;
 
+use DOMXPath;
+use DOMDocument;
+
 /**
  *
  * Notice from Yoann: This file has been downloaded from the PressForward tool (https://github.com/PressForward/pressforward/)
