@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [1.1.2] - 2018-10-12
+### Changed
+- Fix for category links that were not correctly constructed [See Issue](https://github.com/DARIAH-ERIC/nerd-wp/issues/3)
+
 ## [1.1.1] - 2018-10-02
 ### Changed
 - Fix for different languages within the Wikipedia links [See Issue](https://github.com/DARIAH-ERIC/nerd-wp/issues/2)
