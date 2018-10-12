@@ -64,7 +64,7 @@ class Nerd_Wp {
 		if ( defined( 'NERD_WP_VERSION' ) ) {
 			$this->version = NERD_WP_VERSION;
 		} else {
-			$this->version = '1.1.2';
+			$this->version = '1.1.3';
 		}
 		$this->plugin_name = 'nerd-wp';
 		$this->load_dependencies();
