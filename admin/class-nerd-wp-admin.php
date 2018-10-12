@@ -213,10 +213,11 @@ class Nerd_Wp_Admin {
 		foreach ( $wiki_array as $key => $array ) {
 			if ( $key == $WIKIPEDIA_ID || $key == $CATEGORY_ID ) {
 				$return_links .= '<a target="_blank" href="https://' . ( sizeof( $array ) > 2 && $array[2] !== false ?
-                        $array[2] : "en" ) . '.wikipedia.org/wiki?curid=' . $array[1] . '">' . $key . ":" . $value .
+                        $array[2] : "en" ) . '.wikipedia.org/wiki?curid=' . $array[1] . '">' . $key . ":" . $array[1] .
                          '</a> ';
 			} else if ( $key == $WIKIDATA_ID ) {
-				$return_links .= '<a target="_blank" href="https://www.wikidata.org/wiki/' . $value . '">' . $key . ":" . $value . '</a> ';
+				$return_links .= '<a target="_blank" href="https://www.wikidata.org/wiki/' . $array[1] . '">' . $key
+                                 . ":" . $array[1] . '</a> ';
 			}
 		}
 		return $return_links;
@@ -364,7 +365,7 @@ class Nerd_Wp_Admin {
 			foreach ($nerd_response["global_categories"] as $category) {
 				if( $category["weight"] > $category_weight) {
 					error_log($category["category"] . " - page_id: " . $category["page_id"]);
-					$this->add_taxonomy_with_wikipedia_id( $post_id, $category["category"], 'category', array( "category_id" => array( $category["page_id"], $lang ) ) );
+					$this->add_taxonomy_with_wikipedia_id( $post_id, $category["category"], array( "category_id" => array( $category["page_id"], $lang ) ) );
 				}
 			}
 			error_log( "=== Named entities ===" );
@@ -378,7 +379,7 @@ class Nerd_Wp_Admin {
 					if( array_key_exists("wikidataId", $entity) ) {
 						$wiki_array["wikidata_id"] = array( $entity["wikidataId"], $lang );
 					}
-					$this->add_taxonomy_with_wikipedia_id( $post_id, $entity["rawName"], 'entity', $wiki_array );
+					$this->add_taxonomy_with_wikipedia_id( $post_id, $entity["rawName"], $wiki_array );
 				}
 			}
 		}
@@ -394,7 +395,7 @@ class Nerd_Wp_Admin {
 	 *
 	 * @return null Nothing
 	 */
-	public function add_taxonomy_with_wikipedia_id( $post_id, $term, $type, $wiki_id ) {
+	public function add_taxonomy_with_wikipedia_id( $post_id, $term, $wiki_id ) {
 		$description = "";
 		foreach( $wiki_id as $key => $array ) {
 			if( $description != "" ) {

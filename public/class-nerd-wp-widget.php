@@ -36,11 +36,11 @@ class Nerd_Wp_Widget extends WP_Widget {
 					}
 					$used_tags = $used_tags + 1;
                     $lang = "en";
-                    if( sizeof( $wiki_array[$CATEGORY_ID] ) > 1 ) {
-                        $lang = $wiki_array[$CATEGORY_ID][1];
+                    if( sizeof( $wiki_array[$CATEGORY_ID] ) > 2 ) {
+                        $lang = $wiki_array[$CATEGORY_ID][2];
                     }
 					echo '<a target="_blank" class="label" href="https://' . $lang . '.wikipedia.org/wiki?curid=' .
-                                                                           $wiki_array[$CATEGORY_ID][0] . '">' .
+                                                                           $wiki_array[$CATEGORY_ID][1] . '">' .
                          $tag->name . '</a> ';
 				} else if ( array_key_exists( $WIKIPEDIA_ID, $wiki_array ) || array_key_exists( $WIKIDATA_ID, $wiki_array ) ) {
 					if( $used_tags == 0 ) {
