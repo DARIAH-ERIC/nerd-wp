@@ -24,6 +24,7 @@ namespace Nerd_Wp_Lib\Utils;
 */
 
 use DOMDocument;
+use DOMXPath;
 use Iterator;
 
 class OpenGraphForNerd implements Iterator {
