@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [1.1.4] - 2018-10-16
+### Changed
+- Add missing namespace for the HTML parser
+
 ## [1.1.3] - 2018-10-12
 ### Changed
 - Add missing imports, was not important for most usage
