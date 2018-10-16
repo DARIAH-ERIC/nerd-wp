@@ -145,7 +145,7 @@ class ReadabilityForNerd {
 			$this->dom->preserveWhiteSpace = false;
 			@$this->dom->loadHTML( $html );
 		}
-		$this->dom->registerNodeClass( 'DOMElement', 'JSLikeHTMLElementForNerd' );
+		$this->dom->registerNodeClass( 'DOMElement', 'Nerd_Wp_Lib\Utils\JSLikeHTMLElementForNerd' );
 	}
 
 	/**
