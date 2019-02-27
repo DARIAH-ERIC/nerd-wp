@@ -50,7 +50,8 @@ class Nerd_Wp_Widget extends WP_Widget {
 						echo $args["before_title"] . $title . $args["after_title"];
 					}
 					$used_tags = $used_tags + 1;
-					echo '<span class="label nerd_tags" id="' . explode( ";", $tag->description )[0] . '">' . $tag->name . '</span> ';
+					echo '<span class="label nerd_tags" id="' . explode( ";", $tag->description )[0] . '">' .
+                         $tag->name . '<div class="info-sense-box waiting"><img src="' . plugin_dir_url( __FILE__ ) . 'images/ajax-loader.gif" alt="loading..."/></div></span> ';
 				}
             }
             if( $used_tags > 0 ) {

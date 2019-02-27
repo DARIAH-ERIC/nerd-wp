@@ -20,7 +20,9 @@ function hoverEntity() {
                     type: 'GET',
                     url: '/nerd_kb_service/?url=' + encodeURIComponent('service/kb/concept/' + wikipedia_id.split(":")[1] + '?lang=' + wikipedia_id.split(":")[2]),
                     success: function(result) {
-                        viewEntity(jQuery.parseJSON(result), wikipedia_id, this_element);
+                        var entityStr = viewEntity(jQuery.parseJSON(result), wikipedia_id);
+                        jQuery(this_element).find('.waiting').remove();
+                        jQuery(this_element).append(entityStr);
                     },
                     complete: function() {
                         window.ajaxRunning = false;
@@ -32,7 +34,7 @@ function hoverEntity() {
     });
 }
 
-function viewEntity(entity, wikipedia_id, parent_element) {
+function viewEntity(entity, wikipedia_id) {
     var lang ='en';
     if(wikipedia_id.split(":")[2] !== false) {
         lang = wikipedia_id.split(":")[2];
@@ -124,13 +126,6 @@ function viewEntity(entity, wikipedia_id, parent_element) {
 
     string += "</div></div>";
 
-    // var href_id = "wikipedia_id:" + wikipedia_id;
-    jQuery(parent_element).append(string);
-    // jQuery(document.getElementById(wikipedia_id)).append(string);
 
-    // $("#spanhovering").hover(function(event) {
-    //     $("#divtoshow").css({top: event.clientY, left: event.clientX}).show();
-    // }, function() {
-    //     $("#divtoshow").hide();
-    // });
+    return string;
 }

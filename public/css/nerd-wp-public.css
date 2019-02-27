@@ -1,6 +1,7 @@
 .nerd_tags {
     /*text-decoration: underline #eb684b;*/
     /*border: 1px dashed orange;*/
+    position:relative;
 }
 
 .label {
@@ -10,7 +11,6 @@
     color: #ffffff;
     text-transform: uppercase;
     white-space: nowrap;
-    /*background-color: #87A1A8;*/
     background-color: #f89406;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -20,8 +20,8 @@
 .info-sense-box {
     display: none;
     position: absolute;
-    top: 50%;
-    left: 0%;
+    top: 15px;
+    left: -200px;
     width: 450px;
     padding: 5px 2px 3px 2px;
     border: 1px solid #87A1A8;
