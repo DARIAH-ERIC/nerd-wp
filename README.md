@@ -1,6 +1,6 @@
 # NERD WordPress Plugin
 
-_Developed by DARIAH for [OpenMethods](https://openmethods.dariah.eu/)_
+_Developed by [DARIAH](https://www.dariah.eu/) for [OpenMethods](https://openmethods.dariah.eu/)_
 
 [NERD](https://github.com/kermitt2/entity-fishing) is an application that allows to recognize and disambiguate named entities.
 This plugin allows integration of this with Wordpress. Each post can be run through NERD and will automatically create tags for it.
@@ -14,6 +14,10 @@ Those tags, in return are used to propose extra information coming from Wikipedi
 # Install (manually)
 1. Upload directory `nerd-wp` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
+
+# Add the plugin Widget
+1. Once in the admin section, go to the Widget section and add the NERD WP Widget to your sidebar
+1. You may also modify the title of the Widget
 
 # How does it work?
 
