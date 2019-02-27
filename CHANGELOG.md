@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.2.0] - 2019-02-27
 ### Added
 - Title of Widget can be modified
-- Loading wheel when retrieving the information from NERD in the Widget
+- Loading wheel when retrieving the information from NERD in the Widget [See Issue](https://github.com/DARIAH-ERIC/nerd-wp/issues/4)
 ### Changed
 - Add more information in README
 
