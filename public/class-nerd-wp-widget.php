@@ -14,6 +14,8 @@ class Nerd_Wp_Widget extends WP_Widget {
 		$CATEGORY_ID = "category_id";
 		$LANGUAGE = "language";
 
+        $title = apply_filters( 'widget_title', $instance['title'] );
+
 		if( is_single() ) {
 			global $post;
 
@@ -32,7 +34,7 @@ class Nerd_Wp_Widget extends WP_Widget {
 				if ( array_key_exists( $CATEGORY_ID, $wiki_array ) ) {
 					if( $used_tags == 0 ) {
 						echo $args['before_widget'];
-						echo $args["before_title"] . 'NERD Plugin' . $args["after_title"];
+						echo $args["before_title"] . $title . $args["after_title"];
 					}
 					$used_tags = $used_tags + 1;
                     $lang = "en";
@@ -45,10 +47,11 @@ class Nerd_Wp_Widget extends WP_Widget {
 				} else if ( array_key_exists( $WIKIPEDIA_ID, $wiki_array ) || array_key_exists( $WIKIDATA_ID, $wiki_array ) ) {
 					if( $used_tags == 0 ) {
 						echo $args['before_widget'];
-						echo $args["before_title"] . 'NERD Plugin' . $args["after_title"];
+						echo $args["before_title"] . $title . $args["after_title"];
 					}
 					$used_tags = $used_tags + 1;
-					echo '<span class="label nerd_tags" id="' . explode( ";", $tag->description )[0] . '">' . $tag->name . '</span> ';
+					echo '<span class="label nerd_tags" id="' . explode( ";", $tag->description )[0] . '">' .
+                         $tag->name . '<div class="info-sense-box waiting"><img src="' . plugin_dir_url( __FILE__ ) . 'images/ajax-loader.gif" alt="loading..."/></div></span> ';
 				}
             }
             if( $used_tags > 0 ) {
@@ -69,11 +72,20 @@ class Nerd_Wp_Widget extends WP_Widget {
 	 * @return string|void
 	 */
 	public function form( $instance ) {
+        $title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Named entity-fishing', 'text_domain' );
+        echo '<p><label for="' . $this->get_field_id( 'title' ) . '">' . _e( 'Title:' ) . '</label>
+        <input class="widefat" id="' . $this->get_field_id( 'title' ) . '" name="' .
+             $this->get_field_name( 'title' ) . '" type="text" value="' . esc_attr( $title ) . '" /></p>';
 	}
+
+    public function update( $new_instance, $old_instance ) {
+        $instance = array();
+        $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+        return $instance;
+    }
 
 	function nerd_wp_widget() {
 		register_widget( $this );
 	}
 }
-
 ?>

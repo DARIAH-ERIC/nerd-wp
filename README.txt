@@ -5,7 +5,7 @@ Tags: entity recognition, disambiguation, entity fishing
 Requires at least: 4.9.1
 Tested up to: 4.9.1
 Requires PHP: 5.6.35
-Stable tag: 1.1.4
+Stable tag: 1.2.0
 License: Apache License - 2.0
 License URI: http://www.apache.org/licenses/LICENSE-2.0
 
@@ -27,6 +27,10 @@ Those tags, in return are used to propose extra information coming from Wikipedi
 1. Upload directory `nerd-wp` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 
+== Add the plugin Widget ==
+1. Once in the admin section, go to the Widget section and add the NERD WP Widget to your sidebar
+1. You may also modify the title of the Widget
+
 == Frequently Asked Questions ==
 
 To come later
@@ -36,6 +40,11 @@ To come later
 1. Example of the widget that includes the Tags created with the Named Entities by NERD
 
 == Changelog ==
+
+= 1.2.0 =
+* Title of Widget can be modified
+* Loading wheel when retrieving the information from NERD in the Widget [See Issue](https://github.com/DARIAH-ERIC/nerd-wp/issues/4)
+* Add more information in README about the Widget
 
 = 1.1.4 =
 * Add missing namespace for the HTML parser
