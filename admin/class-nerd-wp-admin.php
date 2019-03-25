@@ -75,18 +75,6 @@ class Nerd_Wp_Admin {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Nerd_Wp_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Nerd_Wp_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/nerd-wp-admin.js', array( 'jquery' ), $this->version, false );
 	}
 
 	/**
@@ -230,10 +218,60 @@ class Nerd_Wp_Admin {
 	}
 
 	function nerd_meta_box() {
-		add_meta_box("nerd-meta-box", "NERD WP", array($this, "relaunch_nerd"), "post", "side", "high", 0);
-	}
+        add_meta_box( "nerd-meta-box", 'NERD WP', array($this, "relaunch_nerd"), "post", "side", "high",
+            array(
+                '__back_compat_meta_box' => true,
+            )
+        );
+    }
 
-	/**
+    /**
+     * Register NERD Gutenberg Metabox to Rest API
+     */
+    function nerd_gutenberg_api_posts_meta_field() {
+        register_rest_route(
+            "nerd-gutenberg/v1", "/relaunch-nerd", array(
+                "methods"  => "POST",
+                "callback" => array( $this, "nerd_gutenberg_update_callback" ),
+                "args"	 => array(
+                    "post_id" => array(
+                        "sanitize_callback" => "absint",
+                    ),
+                ),
+            )
+        );
+    }
+
+    /**
+     * NERD Gutenberg REST API Callback for Gutenberg
+     */
+    function nerd_gutenberg_update_callback( $request ) {
+        $post_id = $request->get_param( 'post_id' );
+        if( $post_id && $post_id != '') {
+            $this->on_post_sent_to_draft( $post_id, true );
+        }
+    }
+
+    /**
+     * Register NERD sidebar script
+     */
+    function sidebar_plugin_register() {
+        wp_register_script(
+            'plugin-sidebar-js',
+            plugins_url( 'js/sidebar.js', __FILE__ ),
+            array( 'wp-plugins', 'wp-edit-post', 'wp-element' )
+        );
+    }
+
+    /**
+     * Add sidebar script
+     */
+    function sidebar_plugin_script_enqueue() {
+        wp_enqueue_script( 'plugin-sidebar-js' );
+    }
+
+
+    /**
 	 * Checks the meta box input and relaunch NERD if necessary
 	 */
 	function nerd_meta_save( $post_id ) {
@@ -245,7 +283,7 @@ class Nerd_Wp_Admin {
 		if ( $is_autosave || $is_revision || !$is_valid_nonce ) {
 			return;
 		}
-		$this->on_post_sent_to_draft( $post_id );
+		$this->on_post_sent_to_draft( $post_id, false );
 	}
 
 	/**
@@ -253,11 +291,12 @@ class Nerd_Wp_Admin {
 	 * @since    1.0.0
 	 *
 	 * @param $post_id int The identifier of the post just created or updated
+	 * @param $force bool If true, we relaunch NERD whatever the parameters are. Default is false.
 	 */
-	public function on_post_sent_to_draft( $post_id ) {
+	public function on_post_sent_to_draft( $post_id, $force = false ) {
 		error_log( "Start 'send to draft' hook" );
 
-		if( ! isset( $_POST["pf_drafted_nonce"] ) && ! isset( $_POST[$this->submit_btn_name] ) ) {
+		if( ! isset( $_POST["pf_drafted_nonce"] ) && ! isset( $_POST[$this->submit_btn_name] ) && ! $force ) {
 			error_log( "We do not launch NERD, end of hook" );
 			return;
 		} else {  //If it comes directly from PressForward or we click "relaunch NERD"
