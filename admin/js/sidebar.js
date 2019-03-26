@@ -19,7 +19,6 @@
                         className: 'nerd-plugin-sidebar-btn',
                         onClick: function() {
                             let post_id = wp.data.select("core/editor").getCurrentPostId();
-                            console.log( 'Button clicked for id: ' + post_id );
                             wp.apiRequest( { path: '/nerd-gutenberg/v1/relaunch-nerd?post_id=' + post_id, method: 'POST' } ).then(
                                 ( data ) => {
                                     return data;
