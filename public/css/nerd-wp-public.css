@@ -41,3 +41,7 @@
 .info-sense-box p {
     margin-bottom: 5px;
 }
+
+.widget_nerd_wp_widget a.label {
+    color: #3d3d3d;
+}
