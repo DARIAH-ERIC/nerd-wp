@@ -55,3 +55,4 @@ To prepare the plugin for WordPress 5.x, we added support for node.js 10.1.0 via
 That is the reason we have the `.tool-versions` file that asdf uses. Of course, you can use `npm` without `asdf`, for
 example if you installed it directly.
 We installed all packages with `npm install @wordpress/plugins --save` for what is needed for WordPress 5.x.
+Updates are done with `npm install @wordpress/plugins --update`.

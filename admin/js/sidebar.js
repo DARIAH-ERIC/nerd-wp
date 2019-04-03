@@ -9,7 +9,7 @@
             return el( PluginSidebar,
                 {
                     name: 'nerd-plugin-sidebar',
-                    icon: 'admin-post',
+                    icon: 'dashboard',
                     title: 'NERD WP',
                 },
                 el( 'div',
@@ -18,9 +18,12 @@
                         isPrimary: true,
                         className: 'nerd-plugin-sidebar-btn',
                         onClick: function() {
+                            $(".nerd-plugin-sidebar-btn").addClass("is-busy");
                             let post_id = wp.data.select("core/editor").getCurrentPostId();
                             wp.apiRequest( { path: '/nerd-gutenberg/v1/relaunch-nerd?post_id=' + post_id, method: 'POST' } ).then(
                                 ( data ) => {
+                                    // wp.data.select( 'core' ).getEntityRecords( 'taxonomy', 'post_tag', { post_per_page: -1 } );
+                                    location.reload();
                                     return data;
                                 },
                                 ( err ) => {

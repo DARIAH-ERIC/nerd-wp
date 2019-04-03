@@ -3,9 +3,9 @@ Contributors: yoannspace
 Donate link:
 Tags: entity recognition, disambiguation, entity fishing
 Requires at least: 4.9.1
-Tested up to: 4.9.1
+Tested up to: 5.1.1
 Requires PHP: 5.6.35
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: Apache License - 2.0
 License URI: http://www.apache.org/licenses/LICENSE-2.0
 
@@ -40,6 +40,9 @@ To come later
 1. Example of the widget that includes the Tags created with the Named Entities by NERD
 
 == Changelog ==
+
+= 1.2.2 =
+* The plugin is now working on Gutenberg
 
 = 1.2.1 =
 * There was an error in the WordPress release but nothing changed
