@@ -64,7 +64,7 @@ class Nerd_Wp {
 		if ( defined( 'NERD_WP_VERSION' ) ) {
 			$this->version = NERD_WP_VERSION;
 		} else {
-			$this->version = '1.2.1';
+			$this->version = '1.2.3';
 		}
 		$this->plugin_name = 'nerd-wp';
 		$this->load_dependencies();
@@ -153,12 +153,14 @@ class Nerd_Wp {
 		$this->loader->add_filter( 'manage_edit-post_tag_columns', $plugin_admin, 'add_post_tag_columns' );
 		$this->loader->add_filter( 'manage_post_tag_custom_column', $plugin_admin, 'add_post_tag_column_content', 10, 3);
 
-		// Launch the NERD callback when a post is sent to draft
-		// $this->loader->add_action( 'draft_post', $plugin_admin, 'on_post_sent_to_draft' );
 		// Launch the NERD callback when a post is saved (draft or update)
 		$this->loader->add_action( 'save_post', $plugin_admin, 'nerd_meta_save' );
 		// Add meta box for NERD (so we can relaunch the NERD action when needed - i.e. after fiddling with the NERD options)
 		$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'nerd_meta_box' );
+        // Add meta box for NERD but used by Gutenberg editor
+        $this->loader->add_action( 'rest_api_init', $plugin_admin, 'nerd_gutenberg_api_posts_meta_field' );
+        $this->loader->add_action( 'init', $plugin_admin, 'sidebar_plugin_register' );
+        $this->loader->add_action( 'enqueue_block_editor_assets', $plugin_admin, 'sidebar_plugin_script_enqueue' );
 
 	}
 	/**
