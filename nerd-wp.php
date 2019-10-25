@@ -16,7 +16,7 @@
  * Plugin Name:       NERD WP
  * Plugin URI:        https://github.com/dariah-eric/nerd-wp
  * Description:       NERD (Named Entity Recognition and Disambiguation: https://github.com/kermitt2/entity-fishing) is an application that allows to recognize and disambiguate named entities. This plugin allows integration of this with Wordpress.
- * Version:           1.2.2
+ * Version:           1.2.3
  * Author:            Yoann
  * Author URI:        https://www.dariah.eu
  * License:           Apache License - 2.0

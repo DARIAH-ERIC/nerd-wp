@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [1.2.3] - 2019-10-25
+### Added
+- The plugin now has a sidebar in the admin view - and a sidebar more as well
+
 ## [1.2.2] - 2019-04-03
 ### Added
 - The plugin is now working on Gutenberg
