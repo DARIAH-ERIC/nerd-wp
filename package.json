@@ -1,6 +1,6 @@
 {
   "name": "nerd-wp",
-  "version": "1.2.3",
+  "version": "1.2.5",
   "description": "NERD is an application that allows to recognize and disambiguate named entities. This plugin allows integration of this with Wordpress.",
   "repository": {
     "type": "git",
